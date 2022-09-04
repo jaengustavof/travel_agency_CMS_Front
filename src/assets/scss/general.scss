@@ -1,0 +1,34 @@
+@import 'https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap';
+
+$primary-color: #FE7A15;
+$primary-color-20pct: #FE7A1520;
+$secondary-color: #3011BC;
+
+$theme-white: #FFFEFE;
+$theme-semi-white: #f1efef;
+$gray-400:#C4C4C4;
+$gray-500:#99B4CC;
+$gray-800:#607080;
+$gray-900:#4C5A66;
+$gray-1000:#39434D;
+$gray-1100: #262D33;
+
+//Media Queries//
+$desktop1: 1199px;
+$desktop2: 959px;
+$desktop3: 799px;
+$desktop4: 659px;
+$mobile1: 479px;
+$mobile2: 359px;
+
+
+//General//
+* {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}

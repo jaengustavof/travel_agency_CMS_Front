@@ -1,0 +1,130 @@
+@import "../../assets/scss/general.scss";
+
+
+header {
+    width: 100%;
+    height: 100px;
+    box-shadow: 0px 4px 4px rgba(0,0,0,25/100);
+    position: relative;
+    top: 0;
+    z-index: 3;
+    nav.desktop {
+        width: 100%;
+        max-width: 1200px;
+        padding: 35px 0;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &_brand {
+                color: $secondary-color;
+                font-family: 'Titillium Web', sans-serif;
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                margin-left: 5px;
+            }
+        }
+        .menu-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 350px;
+            a{
+                color: $gray-800;
+            }
+        }
+        .secondary-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            a{
+                color: $gray-800;
+            }
+            &_button{
+                color: $secondary-color;
+                padding: 5px 15px;
+                border: 1px solid $secondary-color;
+                border-radius: 5px;
+                margin-left: 25px;
+            }
+        }
+    }
+
+    nav.mobile {
+        display: none;
+        width: 100%;
+        padding: 28px 0;
+        margin: auto;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        .menu-container {
+            font-size: 30px;
+        }
+        .logo-container_brand {
+            color: $secondary-color;
+            font-family: 'Titillium Web', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-left: 5px;
+        }
+        .nav-menu {
+            position: absolute;
+            width: 0%;
+            height: calc(100vh - 28px);
+            background-color: rgba(0,0,0,25/100);
+            top: 101px;
+            right: 0;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            transition: 0.5s;
+            padding: 0;
+            overflow: hidden;
+            a{
+                color: $gray-800;
+                font-size: 36px;
+                margin-bottom: 40px;
+                opacity: 0;
+            }
+            .links-shown {
+                opacity: 1;
+            }
+        }
+        .nav-menu-shown {
+            width: 80%;
+            padding: 30px 10px;
+        }
+    }
+
+    @media only screen and (max-width: $desktop1) { //960 - 1199
+
+    }
+    @media only screen and (max-width: $desktop2) {//800 - 959
+    }
+    @media only screen and (max-width: $desktop3) {//660 - 799
+        nav.desktop{
+            display: none;
+        }
+        nav.mobile {
+            display: flex;
+        }
+    }
+    @media only screen and (max-width: $desktop4) {//480 - 659
+    }
+    @media only screen and (max-width: $mobile1) { // 360 - 479
+    }
+    @media only screen and (max-width: $mobile2) { // 320 - 359
+    }
+  
+
+}
