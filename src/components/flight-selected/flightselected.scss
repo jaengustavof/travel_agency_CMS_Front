@@ -1,0 +1,68 @@
+@import "../../assets/scss/general.scss";
+
+.flight-selected-container {
+    width: 100%;
+    &_itinerary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background-color: $theme-white;
+        border-radius: 5px;
+        box-shadow: 2px 2px 7px rgba($color: $gray-800, $alpha: 0.5);
+        border: 1px solid $gray-500;
+        margin-bottom: 5px;
+        &_icon{
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        &_airline {
+            font-size: 20px;
+            font-weight: 400;
+        }
+        &_schedule {
+            font-size: 20px;
+            width: 50%;
+            text-align: right;
+            p{
+                margin: 0;
+            }
+        }
+    }
+}
+
+.flight-selected-container_fare {
+    width: 100%;
+    padding: 40px 10px 20px;
+    font-size: 18px;
+    background-color: $theme-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    p {
+        margin-bottom: 5px;
+    }
+    .fare-total {
+        font-weight: bold;
+        font-size: 25px;
+    }
+    &_cta{
+        width: 80%;
+        margin-top: 20px;
+        border-radius: 7px;
+        background-color: $primary-color;
+        border: 1px solid $primary-color;
+        text-align: center;
+        color: $theme-white;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: 0.5s;
+        &:hover {
+            color: $primary-color;
+            background-color: $theme-white; 
+            transition: 0.5s; 
+            box-shadow: 1px 1px 5px rgba($color: $gray-1100, $alpha: 0.5);
+        }
+    }
+}

@@ -4,10 +4,15 @@ $primary-color: #FE7A15;
 $primary-color-20pct: #FE7A1520;
 $secondary-color: #3011BC;
 
+$light-green: #EAFFFB;
+$accept-green: #007B65;
+$warning: red;
+
 $theme-white: #FFFEFE;
 $theme-semi-white: #f1efef;
 $gray-400:#C4C4C4;
 $gray-500:#99B4CC;
+$gray-700: #7C8DB0;
 $gray-800:#607080;
 $gray-900:#4C5A66;
 $gray-1000:#39434D;
@@ -31,4 +36,8 @@ a {
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
+}
+
+.flights-page{
+    background-color: $theme-semi-white;
 }

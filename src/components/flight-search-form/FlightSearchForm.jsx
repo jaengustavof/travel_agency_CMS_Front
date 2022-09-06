@@ -51,44 +51,47 @@ function App() {
 
   return (
     <section className='flight-search-form-container'>
-      <ButtonGroup className='button-group  gap-3'>
-          {radios.map((radio, idx) => (
-          <ToggleButton
-              key={idx}
-              id={`radio-${idx}`}
-              type='radio'
-              variant={'outline-tabs'}
-              name='radio'
-              value={radio.value}
-              checked={flight === radio.value}
-              onChange={(e) => setFlight(e.currentTarget.value)}
-              className={idx === 0?'search-button selected':'search-button'}
-              onClick={(e) =>handleClick(e.currentTarget)}
+      <div className="flight-search-form-container_background">
+        <ButtonGroup className='button-group  gap-3'>
+            {radios.map((radio, idx) => (
+            <ToggleButton
+                key={idx}
+                id={`radio-${idx}`}
+                type='radio'
+                variant={'outline-tabs'}
+                name='radio'
+                value={radio.value}
+                checked={flight === radio.value}
+                onChange={(e) => setFlight(e.currentTarget.value)}
+                className={idx === 0?'search-button selected':'search-button'}
+                onClick={(e) =>handleClick(e.currentTarget)}
 
-          >
-              {radio.name}
-          </ToggleButton>
-          ))}
-      </ButtonGroup>
-       <form onSubmit={handleSubmit(onSubmit)}>
+            >
+                {radio.name}
+            </ToggleButton>
+            ))}
+        </ButtonGroup>
+        <form onSubmit={handleSubmit(onSubmit)}>
 
-        <div className="inputContainer">
-          <FontAwesomeIcon icon={faEarthAmericas} className='input-icon' />
-          <input type="text"{...register("departure", {required: true})} placeholder="Departure City"/>
-          {errors.departure?.type === 'required' && <span style={{color: 'red'}}>Departure City is required</span>}
-        </div>
+          <div className="inputContainer">
+            <FontAwesomeIcon icon={faEarthAmericas} className='input-icon' />
+            <input type="text"{...register("departure", {required: true})} placeholder="Departure City"/>
+            {errors.departure?.type === 'required' && <span style={{color: 'red'}}>Departure City is required</span>}
+          </div>
 
-        <div className="inputContainer">
-          <FontAwesomeIcon icon={faEarthAmericas} className='input-icon' />
-          <input type="text" {...register("destination", {required: true})} placeholder="Destination City"/>
-          {errors.destination?.type === 'required' && <span style={{color: 'red'}}>Destination City is required</span>}
-        </div>
-        
-        <FlightType/>
-        
+          <div className="inputContainer">
+            <FontAwesomeIcon icon={faEarthAmericas} className='input-icon' />
+            <input type="text" {...register("destination", {required: true})} placeholder="Destination City"/>
+            {errors.destination?.type === 'required' && <span style={{color: 'red'}}>Destination City is required</span>}
+          </div>
+          
+          <FlightType/>
+          
 
-        <input type="submit" className='submit-button'/>
-      </form>
+          <input type="submit" className='submit-button'/>
+        </form>
+      </div>
+
     </section>
   )
 }

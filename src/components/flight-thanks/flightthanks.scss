@@ -1,0 +1,46 @@
+@import "../../assets/scss/general.scss";
+
+.flight-thanks-container {
+    width: 100%;
+    height: calc(100vh - 100px);
+    max-width: 960px;
+    padding: 40px 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    &_alert {
+        width: 100%;
+        padding: 20px 50px;
+        text-align: center;
+        border-radius: 7px;
+        margin: 0 auto;
+        border: 1px solid $accept-green;
+        color: $accept-green;
+        background-color: $light-green;
+        p {
+            margin: 0;
+        }
+    }
+    &_message {
+        margin-top: 40px;
+        &_title {
+            font-size: 24px;
+            font-weight: bold;
+            color: $secondary-color;
+        }
+        &_subtitle {
+            font-size: 18px;
+            font-weight: 700;
+            color: $gray-1000;
+            margin-top: 15px;
+        }
+        &_text {
+            font-size: 18px;
+            font-weight: 400;
+            color: $gray-800;
+            margin-top: 15px;
+        }
+    }
+}
