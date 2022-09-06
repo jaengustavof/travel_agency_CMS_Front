@@ -1,0 +1,173 @@
+@import "../../assets/scss/general.scss";
+
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 735px;
+    position: relative;
+    .search-blank {
+        width: 50%;
+        height: 100%;
+        background-color: $theme-white;
+    }
+    .search-image {
+        width: 50%;
+        height: 100%;
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .search-container{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        max-width: 1200px;
+        margin: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        &_h1 {
+            padding-top: 80px;
+            font-size: 50px;
+            color: $gray-1000;
+        }
+        &_h2 {
+            font-size: 50px;
+            font-weight: bold;
+            color: $secondary-color;
+            margin-bottom: 60px;
+        }
+        &_fields {
+            width: 50%;
+            height: 100%;
+            padding: 0 25px;
+            .button-group {
+                .search-button {
+                    color: $gray-800;
+                    border: none;
+                    border-radius: 0;
+                    &:hover {
+                        color: $primary-color;
+                        border-bottom: 1px solid $primary-color; 
+                    }
+                }
+                .selected {
+                    color: $primary-color;
+                    border-bottom: 1px solid $primary-color;
+                }
+            }
+        }
+        
+    }
+
+    @media only screen and (max-width: $desktop1) { //960 - 1199
+
+    }
+    @media only screen and (max-width: $desktop2) {//800 - 959
+        .search-blank {
+            width: 0;
+        }
+        
+        .search-image {
+            width: 100%;
+        }
+
+        .search-container{ 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &_h1 {
+                padding-top: 0;
+            }
+            &_fields {
+                width: 70%;
+                height: 95%;
+                border-radius: 7%;
+                background-color: rgba($color: $theme-white, $alpha: 0.9);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    @media only screen and (max-width: $desktop3) {//660 - 799
+        .search-container{ 
+            padding: 20px;
+            &_fields {
+                width: 100%;
+                height: 95%;
+                border-radius: 7%;
+                background-color: rgba($color: $theme-white, $alpha: 0.9);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+    }
+    @media only screen and (max-width: $desktop4) {//480 - 659
+        .search-container{
+            &_h2 {
+                font-size: 45px;
+                font-weight: bold;
+                color: $secondary-color;
+                margin-bottom: 60px;
+            }
+            &_fields {
+
+                .button-group {
+                    .search-button {
+                        font-size: 24px;
+                        &:hover {
+                            color: $primary-color;
+                            border-bottom: 1px solid $primary-color; 
+                        }
+                    }
+                    .selected {
+                        color: $primary-color;
+                        border-bottom: 1px solid $primary-color;
+                    }
+                }
+            }
+            
+        }
+    
+    }
+    @media only screen and (max-width: $mobile1) { // 360 - 479
+        .search-container{
+            &_h1 {
+                font-size: 35px;
+                text-align: center;
+            }
+            &_h2 {
+                font-size: 35px;
+                text-align: center;
+            }
+            &_fields {
+
+                .button-group {
+                    .search-button {
+                        font-size: 24px;
+                        &:hover {
+                            color: $primary-color;
+                            border-bottom: 1px solid $primary-color; 
+                        }
+                    }
+                    .selected {
+                        color: $primary-color;
+                        border-bottom: 1px solid $primary-color;
+                    }
+                }
+            }
+            
+        }
+    }
+    @media only screen and (max-width: $mobile2) { // 320 - 359
+    }
+    
+}
