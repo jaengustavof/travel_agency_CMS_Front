@@ -1,0 +1,62 @@
+@import "../../assets/scss/general.scss";
+
+.bookings-table-container {
+    width: calc(100% - 300px);
+    height: calc(100vh - 100px);
+    background-color: $theme-white;
+    padding: 40px 60px;
+    &_title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 40px;
+    }
+    .container-table {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-radius: 7px;
+        box-shadow: 1px 5px 10px rgba($color: $gray-800, $alpha: 0.5);
+        border: 1px solid $gray-500;
+        &_headers {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            border-bottom: 1px solid $gray-900;
+            li {
+                width: 100%;
+                padding: 20px;
+                text-align: center;
+                flex-shrink: 1;
+                color: $gray-900;
+            }
+        }
+        &_content {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            border-bottom: 1px solid $gray-1100;
+            li {
+                width: 100%;
+                padding: 20px;
+                text-align: center;
+                flex-shrink: 1;
+                color: $gray-1100;
+            }
+        }
+        &_content:last-child {
+            border: none;
+        }
+    }
+}

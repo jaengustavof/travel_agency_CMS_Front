@@ -1,5 +1,7 @@
 import React from 'react';
-import './flightthanks.scss'
+import './flightthanks.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlane } from '@fortawesome/free-solid-svg-icons';
 
 const FlightThanks = () =>{
   return (
@@ -16,7 +18,56 @@ const FlightThanks = () =>{
         </div>
 
         <div className="flight-thanks-container_summary">
+            <h3 className="flight-thanks-container_summary_title">Flight summary</h3>
+            <div className="flight-thanks-container_summary_container">
+              <h4 className="summary_container_title">
+                  Outbound Flight
+              </h4>
+              <div className="summary_container_details">
+                <div className="details-logo">
+                  <FontAwesomeIcon icon={faPlane} />
+                </div>
+                <div className="details-airports">
+                  <p>BCN</p>
+                  <p>MAD</p>
+                </div>
 
+                <div className="details-dep-arr">
+                  <p>Departure - 07:35</p>
+                  <p>Arrival - 09:35</p>
+                </div>
+
+                <div className="details-duration">
+                  <p>Flight duration - 2h 00m</p>
+                  <p>Airline - Vueling</p>
+                </div>
+                
+              </div>
+
+              <h4 className="summary_container_title">
+                  Inbound Flight
+              </h4>
+              <div className="summary_container_details">
+                <div className="details-logo reversed">
+                  <FontAwesomeIcon icon={faPlane} />
+                </div>
+                <div className="details-airports">
+                  <p>MAD</p>
+                  <p>BCN</p>
+                </div>
+
+                
+                <div className="details-dep-arr">
+                  <p>Departure - 18:35</p>
+                  <p>Arrival - 19:45</p>
+                </div>
+                
+                <div className="details-duration">
+                  <p>Flight duration - 2h 00m</p>
+                  <p>Airline - Vueling</p>
+                </div>
+              </div>
+            </div>
         </div>
     </section>
   )
