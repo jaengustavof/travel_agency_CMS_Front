@@ -15,7 +15,7 @@ const App = () => {
 
   const onSubmit = data => {
     try {
-      axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, data, {withCredentials : true})
+      axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, data)
       .then(function (response) {
       // handle success
       
