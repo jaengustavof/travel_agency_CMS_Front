@@ -41,11 +41,11 @@ const App = () => {
         <h1 className='reg-form-container_title'>Log In</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="input-container">
-                <input {...register("email", { required: "Email Address is required" })} placeholder='Email Address' type='email'/>
+                <input {...register("user_email", { required: "Email Address is required" })} placeholder='Email Address' type='email'/>
                 <p>{errors.firstName?.message}</p>
             </div>
             <div className="input-container">
-                <input {...register("password")} placeholder='Password' type='password'/>
+                <input {...register("user_password")} placeholder='Password' type='password'/>
                 <p>{errors.age?.message}</p>
             </div>
                 
