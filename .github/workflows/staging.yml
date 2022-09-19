@@ -1,0 +1,19 @@
+name: (STAGING) build, deploy in Vercel
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: deploy in staging
+        run: npx vercel --confirm -n ${{ secrets.PROJECT_ID }} -t ${{ secrets.PROJECT_FRONT_TOKEN }} --scope ${{ secrets.ORG_ID }} -e REACT_APP_API_URL=${{ secrets.API_URL_STAGING }} -b REACT_APP_API_URL=${{ secrets.API_URL_STAGING }}
+
+
