@@ -4,13 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faHotel, faMap, faBars, faHome, faSignIn, faUser} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import menuMobile from './header';
-import { useState, useEffect } from 'react';
-
-
+import { useState, useEffect, useContext } from 'react';
 
 
 const Header = () =>{
-    const [loged, setLoged] = useState(true);
+
+    const [loged, setLoged] = useState(false);
     const [mobileMenu, setMobileMenu] = useState([])
     
       useEffect(() => {
@@ -65,15 +64,12 @@ const Header = () =>{
                     </Link>
                 </div>
                 <div className="menu-container">
-                <Link to="/flight-search"><span ><FontAwesomeIcon icon={faPlane} /></span> Flights</Link>
-                <Link to="/"><span className='mr-1'><FontAwesomeIcon icon={faHotel} /></span> Hotels</Link>
-                <Link to="/"><span className='mr-1'><FontAwesomeIcon icon={faMap} /></span> Tours</Link>
-                
-                
+                    <Link to="/flight-search"><span ><FontAwesomeIcon icon={faPlane} /></span> Flights</Link>
+                    <Link to="/"><span className='mr-1'><FontAwesomeIcon icon={faHotel} /></span> Hotels</Link>
+                    <Link to="/"><span className='mr-1'><FontAwesomeIcon icon={faMap} /></span> Tours</Link>
                 </div>
                 <LogedIn/>
             </nav>
-
             <nav className="px-4 mobile">
                 <div className="logo-container">
                     <Link to="/">

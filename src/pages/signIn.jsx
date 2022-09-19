@@ -2,10 +2,16 @@ import '../assets/scss/general.scss';
 import React from 'react';
 import RegForm from '../components/reg-form/RegForm';
 import RegCompleted from '../components/reg-form/RegCompleted';
-import { useState } from 'react';
+import { useEffect, useContext } from 'react';
+import Context from '../context';
 
 const Registration = () => {
-  const [regStep, setRegStep] = useState(1)
+  let {regStep , setRegStep} = useContext(Context)
+
+  useEffect(()=>{
+    setRegStep(1)
+  }, [])
+ 
   const FormStep = () => {
     if(regStep ===1){
       return <RegForm />

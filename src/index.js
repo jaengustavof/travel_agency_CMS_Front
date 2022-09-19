@@ -10,29 +10,20 @@ import FlightSearch from './pages/flights';
 import RegForm from './pages/signIn';
 import LogForm from './pages/logIn';
 import Users from './pages/user'
-
 import Header from "./components/header/Header";
 import Context from './context';
-
-import { getUsers } from "./services";
 import { useState, useEffect } from 'react';
 
 const Container = () => {
-  const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const result = await getUsers();
-      setUsers(result.data);
-    };
 
-    fetchUsers();
-  }, []);
-
-  console.log(users)
+  const [users, setUsers] = useState();
+  const [logedUsers, setlogedUsers] = useState('test');
+  const [regStep, setRegStep] = useState(1)
 
   return (
-    <Context.Provider value={{}}>
+    
+    <Context.Provider value={{users, setUsers, logedUsers, setlogedUsers, regStep, setRegStep}}>
       <BrowserRouter >
         <Header/>
         <Routes>
