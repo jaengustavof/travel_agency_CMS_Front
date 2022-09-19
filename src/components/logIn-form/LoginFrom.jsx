@@ -13,9 +13,28 @@ const App = () => {
   const { logedUsers, setlogedUsers } = app_context 
 
 
-  const onSubmit = data => [
-    
-  ];
+  const onSubmit = data => {
+    try {
+      axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, data, {withCredentials : true})
+      .then(function (response) {
+      // handle success
+      
+      console.log('respuesta del servidor ',response)
+      return response;
+          })
+          .catch(function (error) {
+            console.log(error.message)
+          })
+  
+    } catch (error) {
+      console.info("> error: ", error.message);
+      return {
+        success: false,
+        data: [],
+      };
+    }  
+  };
+
   return (
     <section className='login-form-container'>
         <img src={logo} alt="" className='reg-form-container_logo'/>
@@ -26,7 +45,7 @@ const App = () => {
                 <p>{errors.firstName?.message}</p>
             </div>
             <div className="input-container">
-                <input {...register("password")} placeholder='Password'/>
+                <input {...register("password")} placeholder='Password' type='password'/>
                 <p>{errors.age?.message}</p>
             </div>
                 
