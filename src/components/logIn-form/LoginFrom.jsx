@@ -3,7 +3,7 @@ import './loginform.scss';
 import logo from '../../assets/images/gallery/logo.png';
 import { useForm } from "react-hook-form";
 import Context from '../../context';
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -22,6 +22,9 @@ const App = () => {
       // handle success
       const { data } = response.data
       setlogedUsers(data)
+      sessionStorage.setItem('user', JSON.stringify(data));
+      var item_value = JSON.parse(sessionStorage.getItem('user'));
+      console.log(item_value )
       navigate('/')
           })
           .catch(function (error) {
@@ -47,11 +50,11 @@ const App = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="input-container">
                 <input {...register("user_email", { required: "Email Address is required" })} placeholder='Email Address' type='email'/>
-                <p>{errors.firstName?.message}</p>
+                <p>{errors.user_email?.message}</p>
             </div>
             <div className="input-container">
-                <input {...register("user_password")} placeholder='Password' type='password'/>
-                <p>{errors.age?.message}</p>
+                <input {...register("user_password", { required: "Password is required" })} placeholder='Password' type='password'/>
+                <p>{errors.user_password?.message}</p>
             </div>
                 
             

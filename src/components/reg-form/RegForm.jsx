@@ -8,8 +8,6 @@ import { useState, useEffect, useContext} from 'react';
 
 import Context from '../../context';
 
-
-
 const App = () => {
     const [errorType, setErrorType] = useState(0);
     let {regStep , setRegStep} = useContext(Context);
@@ -67,27 +65,27 @@ const App = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-container">
                     <input {...register("user_name", { required: "First Name is required" })} placeholder='Name'/>
-                    {errors.firstName && <span>{errors.firstName.message}</span>}
+                    {errors.user_name && <span>{errors.user_name.message}</span>}
                 </div>
                 
                 <div className="input-container">
                     <input {...register("user_last", { required: "Last Name is required" })} placeholder='Last Name'/>
-                    {errors.lastName && <span>{errors.lastName.message}</span>}
+                    {errors.user_last && <span>{errors.user_last.message}</span>}
                 </div>
 
                 <div className="input-container">
                     <input {...register("user_email", { required: "Email Address is required" })} placeholder='Email'/>
-                    {errors.mail && <span>{errors.mail.message}</span>}
+                    {errors.user_email && <span>{errors.user_email.message}</span>}
                 </div>
 
                 <div className="input-container">
                     <input {...register("user_phone", { required: "Phone is required" })} placeholder='Phone'/>
-                    {errors.phone && <span>{errors.phone.message}</span>}
+                    {errors.user_phone && <span>{errors.user_phone.message}</span>}
                 </div>
                 
                 <div className="input-container">
                     <input {...register("user_password", { required: "Password is required" })} placeholder='Password' type='password'/>
-                    {errors.password && <span>{errors.password.message}</span>}
+                    {errors.user_password && <span>{errors.user_password.message}</span>}
                 </div>
                 
                 <div className="input-container">

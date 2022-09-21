@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import menuMobile from './header';
 import Context from '../../context';
 import { useState, useEffect, useContext, useRef } from 'react';
-import axios from 'axios';
 import { Navigate, useNavigate } from "react-router-dom";
 
 
@@ -22,27 +21,9 @@ const Header = () =>{
     };
 
     const logOut = () =>{
-        try {
-            axios.post(`${process.env.REACT_APP_API_URL}/auth/logout`)
-            .then(function (response) {
-            console.log(process.env.REACT_APP_API_URL)
-            console.log('test')
-            console.log(response)
-            navigate('/')
-                })
-                .catch(function (error) {
-                    console.log(process.env.REACT_APP_API_URL)
-                  console.log(error.message)
-                })
-        
-          } catch (error) {
-            console.info("> error: ", error.message);
-            setlogedUsers(null)
-            return {
-              success: false,
-              data: [],
-            };
-          }  
+        sessionStorage.removeItem('user');
+        setlogedUsers(null);
+        navigate('/');
     }
     
     useEffect(() => {
