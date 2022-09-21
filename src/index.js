@@ -18,9 +18,8 @@ const Container = () => {
 
 
   const [users, setUsers] = useState();
-  const [logedUsers, setlogedUsers] = useState('test');
+  const [logedUsers, setlogedUsers] = useState('');
   const [regStep, setRegStep] = useState(1)
-
   return (
     
     <Context.Provider value={{users, setUsers, logedUsers, setlogedUsers, regStep, setRegStep}}>

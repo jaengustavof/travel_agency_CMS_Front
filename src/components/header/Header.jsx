@@ -4,38 +4,77 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faHotel, faMap, faBars, faHome, faSignIn, faUser} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import menuMobile from './header';
-import { useState, useEffect, useContext } from 'react';
+import Context from '../../context';
+import { useState, useEffect, useContext, useRef } from 'react';
+import axios from 'axios';
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 const Header = () =>{
+    const app_context = useContext(Context);
+    const { logedUsers, setlogedUsers } = app_context;
+    const [mobileMenu, setMobileMenu] = useState([]);
+    const [isActive, setActive] = useState("false");
+    const navigate = useNavigate() 
 
-    const [loged, setLoged] = useState(false);
-    const [mobileMenu, setMobileMenu] = useState([])
+    const handleClick = (event) => {
+        setActive(!isActive);
+    };
+
+    const logOut = () =>{
+        try {
+            axios.post(`${process.env.REACT_APP_API_URL}/auth/logout`)
+            .then(function (response) {
+            console.log(process.env.REACT_APP_API_URL)
+            console.log('test')
+            console.log(response)
+            navigate('/')
+                })
+                .catch(function (error) {
+                    console.log(process.env.REACT_APP_API_URL)
+                  console.log(error.message)
+                })
+        
+          } catch (error) {
+            console.info("> error: ", error.message);
+            setlogedUsers(null)
+            return {
+              success: false,
+              data: [],
+            };
+          }  
+    }
     
-      useEffect(() => {
-        if(!loged ){
-            setMobileMenu([{ icon:  <FontAwesomeIcon icon={faHome} />, link: '/', name: 'Home' },
-            { icon:  <FontAwesomeIcon icon={faPlane} />, link: '/flight-search', name: 'Flights' },
-            { icon:  <FontAwesomeIcon icon={faHotel} />, link: '/', name: 'Hotels' },
-            { icon:  <FontAwesomeIcon icon={faMap} />, link: '', name: 'Tours' },
-            { icon:  <FontAwesomeIcon icon={faUser} />, link: '/flight-search', name: 'Log In' },
-            { icon:  <FontAwesomeIcon icon={faSignIn} />, link: '/flight-search', name: 'Sign In' }])
-        }else {
-            setMobileMenu([{ icon:  <FontAwesomeIcon icon={faHome} />, link: '/', name: 'Home' },
-            { icon:  <FontAwesomeIcon icon={faPlane} />, link: '/flight-search', name: 'Flights' },
-            { icon:  <FontAwesomeIcon icon={faHotel} />, link: '/', name: 'Hotels' },
-            { icon:  <FontAwesomeIcon icon={faMap} />, link: '', name: 'Tours' },
-            { icon:  <FontAwesomeIcon icon={faUser} />, link: '/flight-search', name: 'My Account' },
-        ])
-        }
-      }, [loged]);
+    useEffect(() => {
+    if(!logedUsers ){
+        setMobileMenu([{ icon:  <FontAwesomeIcon icon={faHome} />, link: '/', name: 'Home' },
+        { icon:  <FontAwesomeIcon icon={faPlane} />, link: '/flight-search', name: 'Flights' },
+        { icon:  <FontAwesomeIcon icon={faHotel} />, link: '/', name: 'Hotels' },
+        { icon:  <FontAwesomeIcon icon={faMap} />, link: '', name: 'Tours' },
+        { icon:  <FontAwesomeIcon icon={faUser} />, link: '/flight-search', name: 'Log In' },
+        { icon:  <FontAwesomeIcon icon={faSignIn} />, link: '/flight-search', name: 'Sign In' }])
+    }else {
+        setMobileMenu([{ icon:  <FontAwesomeIcon icon={faHome} />, link: '/', name: 'Home' },
+        { icon:  <FontAwesomeIcon icon={faPlane} />, link: '/flight-search', name: 'Flights' },
+        { icon:  <FontAwesomeIcon icon={faHotel} />, link: '/', name: 'Hotels' },
+        { icon:  <FontAwesomeIcon icon={faMap} />, link: '', name: 'Tours' },
+        { icon:  <FontAwesomeIcon icon={faUser} />, link: '/flight-search', name: 'My Account' },
+    ])
+    }
+    }, [logedUsers]);
     
     const LogedIn = () => {
-        if(loged){
+        if(logedUsers){
+
             return(
                 <div className="secondary-container">
-                    <Link to="/log-in"><span className='m-2'> Hello userName </span> <span className='user-icon'><FontAwesomeIcon icon={faUser} /></span></Link>
-                </div>
+                    <div onClick={handleClick}><span className='m-2'>Hello  {logedUsers.user_name}</span> <span className='user-icon'><FontAwesomeIcon icon={faUser} /></span></div>
+                    <div className={isActive?"secondary-container_pop displayed":"secondary-container_pop "}>
+                    <Link to='/user' onClick={handleClick}><span>My Account</span></Link>
+                        <div className="separator"></div>
+                        <span onClick={logOut}>Log Out</span>
+                    </div>
+                </div> 
             )
         }else {
             

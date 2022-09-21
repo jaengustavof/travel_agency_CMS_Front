@@ -5,12 +5,14 @@ import { useForm } from "react-hook-form";
 import Context from '../../context';
 import { useState, useEffect, useContext } from 'react';
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 const App = () => {
   const { register,formState: { errors }, handleSubmit } = useForm();
   const app_context = useContext(Context);
-  const { logedUsers, setlogedUsers } = app_context 
+  const { logedUsers, setlogedUsers } = app_context;
+  const navigate = useNavigate() 
 
 
   const onSubmit = data => {
@@ -18,9 +20,9 @@ const App = () => {
       axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, data)
       .then(function (response) {
       // handle success
-      
-      console.log('respuesta del servidor ',response)
-      return response;
+      const { data } = response.data
+      setlogedUsers(data)
+      navigate('/')
           })
           .catch(function (error) {
             console.log(error.message)
@@ -28,12 +30,15 @@ const App = () => {
   
     } catch (error) {
       console.info("> error: ", error.message);
+      setlogedUsers(null)
       return {
         success: false,
         data: [],
       };
     }  
   };
+
+
 
   return (
     <section className='login-form-container'>
