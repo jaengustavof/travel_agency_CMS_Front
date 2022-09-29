@@ -13,16 +13,24 @@ import Users from './pages/user'
 import Header from "./components/header/Header";
 import Context from './context';
 import { useState, useEffect } from 'react';
+import amadeusAuth from "./hooks/amadeusAuth";
 
 const Container = () => {
+  useEffect(()=>{
+    amadeusAuth();
+    setInterval(() => {
+      console.log('test')
+    }, 1000);
+  })
 
-
+  
   const [users, setUsers] = useState();
+  const [amadeusToken, setAmadeusToken] = useState('')
   const [logedUsers, setlogedUsers] = useState('');
   const [regStep, setRegStep] = useState(1)
   return (
     
-    <Context.Provider value={{users, setUsers, logedUsers, setlogedUsers, regStep, setRegStep}}>
+    <Context.Provider value={{users, setUsers, logedUsers, setlogedUsers, regStep, setRegStep, amadeusToken, setAmadeusToken}}>
       <BrowserRouter >
         <Header/>
         <Routes>

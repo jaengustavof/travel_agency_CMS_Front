@@ -16,7 +16,7 @@ const App = () => {
                     <FontAwesomeIcon icon={faPlane} className='input-icon' />
                 </div>
                 <div className="inputContainer">
-                    <input {...register("origin")} placeholder='Destination' className='city'/>
+                    <input {...register("destination")} placeholder='Destination' className='city'/>
                     <FontAwesomeIcon icon={faPlane} className='input-icon' />
                 </div>
 
