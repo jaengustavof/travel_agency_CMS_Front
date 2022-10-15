@@ -49,9 +49,12 @@
         .input-icon{
             position: absolute;
             transform: translateY(-50%);
-            top: 50%;
+            top: 13px;
             left: 2px;
             color: black;
+        }
+        span {
+            color: $warning;
         }
     }
 
