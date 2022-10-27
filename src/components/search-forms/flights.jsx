@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane } from '@fortawesome/free-solid-svg-icons';
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext} from 'react';
+import { useNavigate } from "react-router-dom";
 import Alert from 'react-bootstrap/Alert';
 import axios from "axios";
 import Context from '../../context';
@@ -17,11 +18,20 @@ const App = () => {
     const { register, handleSubmit, formState: { errors, isSubmitSuccessful }, getValues, reset } = useForm();
     const today = new Date().toISOString().split('T')[0];
     const [errorType, setErrorType] = useState(0);
+    const navigate = useNavigate();
     let {amadeusToken} = useContext(Context);
+    const {flightSearchResult, setFlightSearchResult} = useContext(Context);
 
     useEffect(()=>{
         setErrorType(0)
     },[])
+
+    useEffect(()=>{
+        if(flightSearchResult.length >0){
+            navigate('/flight-search')
+        }
+        
+    },[flightSearchResult])
 
 
     const AlertMessage = ()  => {
@@ -52,10 +62,13 @@ const App = () => {
                 url: `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${origin}&destinationLocationCode=${destination}&departureDate=${departure}&returnDate=${arrival}&adults=${passengers}&max=5`,
                 headers: {  Authorization: `Bearer ${amadeusToken}` }
               };
-              console.log('waiting')
+              console.log('Is Waiting');
+
               axios(config)
               .then(function (response) {
-                console.log(response.data);
+                console.log(response)
+                setFlightSearchResult(response.data.data)
+               
               })
               .catch(function (error) {
                 console.log(error);
