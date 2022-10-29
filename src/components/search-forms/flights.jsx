@@ -62,7 +62,6 @@ const App = () => {
                 url: `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${origin}&destinationLocationCode=${destination}&departureDate=${departure}&returnDate=${arrival}&adults=${passengers}&max=5`,
                 headers: {  Authorization: `Bearer ${amadeusToken}` }
               };
-              console.log('Is Waiting');
 
               axios(config)
               .then(function (response) {
