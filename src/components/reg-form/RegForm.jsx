@@ -36,7 +36,7 @@ const App = () => {
             .then(function (response) {
             // handle success
             setRegStep(2)
-            console.log('respuesta del servidor ',response)
+            //console.log('respuesta del servidor ',response)
             return response;
                 })
                 .catch(function (error) {

@@ -27,7 +27,8 @@ const Container = () => {
   const [logedUsers, setlogedUsers] = useState('');
   const [regStep, setRegStep] = useState(1);
   const [flightSearchStep, setFlightSearchStep] = useState(1);
-  const [flightSearchResult, setFlightSearchResult] = useState([])
+  const [flightSearchResult, setFlightSearchResult] = useState([]);
+  const [selectedFlight, setSelectedFlight] = useState()
 
   const amadeusAuth = async() => {
 
@@ -69,11 +70,13 @@ const Container = () => {
   return (
     
     <Context.Provider value={{users, setUsers, 
-                              logedUsers, setlogedUsers, 
-                              regStep, setRegStep, 
-                              amadeusToken, setAmadeusToken, 
-                              flightSearchStep, setFlightSearchStep,
-                              flightSearchResult, setFlightSearchResult}}>
+                              logedUsers, setlogedUsers,  // loged user
+                              regStep, setRegStep, // registration step
+                              amadeusToken, setAmadeusToken, // Amadeus Token
+                              flightSearchStep, setFlightSearchStep,// Flight purchase step
+                              flightSearchResult, setFlightSearchResult, // flight search results
+                              selectedFlight, setSelectedFlight // selected flight from search results
+                              }}>
       <BrowserRouter >
         <Header/>
         <Routes>
