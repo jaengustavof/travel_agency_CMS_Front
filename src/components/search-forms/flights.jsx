@@ -27,8 +27,10 @@ const App = () => {
     },[])
 
     useEffect(()=>{
-        if(flightSearchResult.length >0){
+        if(flightSearchResult.length >=1){
             navigate('/flight-search')
+        }else{
+            navigate('/')
         }
         
     },[flightSearchResult])
@@ -65,7 +67,6 @@ const App = () => {
 
               axios(config)
               .then(function (response) {
-                console.log(response)
                 setFlightSearchResult(response.data.data)
                
               })

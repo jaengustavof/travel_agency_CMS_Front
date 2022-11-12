@@ -23,7 +23,7 @@ const App = () => {
       const { data } = response.data
       setlogedUsers(data)
       sessionStorage.setItem('user', JSON.stringify(data));
-      var item_value = JSON.parse(sessionStorage.getItem('user'));
+      let item_value = JSON.parse(sessionStorage.getItem('user'));
       console.log(item_value )
       navigate('/')
           })

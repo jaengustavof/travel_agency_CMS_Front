@@ -49,7 +49,7 @@ const Container = () => {
       .then(function (response) {
         setAmadeusToken(response.data.access_token
           );
-      
+          console.log(amadeusToken)
       })
       .catch(function (error) {
       console.log(error);

@@ -8,8 +8,7 @@ import { useContext } from 'react';
 
 
 const FlightResult = () => {
-    const { flightSearchResult } = useContext(Context);
-    const {selectedFlight, setSelectedFlight } = useContext(Context);
+    const {selectedFlight, setSelectedFlight, flightSearchResult } = useContext(Context);
 
     return (
         <section className='flight-results-container'>

@@ -5,7 +5,6 @@ import FlashDeals from "../components/flash-deals/FlashDeals";
 
 const Home = () => {
 
-    
     return (
         <main>   
             <Search/>
