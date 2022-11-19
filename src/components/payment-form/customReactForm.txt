@@ -1,0 +1,85 @@
+import React from 'react';
+import { useForm } from "react-hook-form";
+import './paymentform.scss';
+import paymentlogo from '../../assets/images/gallery/PaymentLogo.png'
+
+export default function App(){
+    const currentYear = new Date().getFullYear();
+    let expYears = [currentYear]
+    for(let i = 1; i <= 20; i++){
+        expYears = [...expYears, currentYear+i]
+    }
+
+    const { register, formState: { errors }, handleSubmit } = useForm();
+    const onSubmit = data => console.log(data);
+
+  return (
+    <section className='payment-form'>
+        <div className="payment-form-container">
+            <div className="container-logo">
+                <img src={paymentlogo} alt="" />
+            </div>
+            <div className="container-form">
+                <h1 className="container-form_title">Your Payment Details</h1>
+
+                <form onSubmit={handleSubmit(onSubmit)} className="container-form_cc-form">
+                    <div className="cc-form_input-container">
+                        <label htmlFor="Name">Name</label>
+                        <input {...register("Name", { required: true })} placeholder='Insert name'/>
+                        {errors.Name && <span className='errorMessage'>Name is required</span>}
+                    </div>
+
+                    <div className="cc-form_input-container">
+                        <label htmlFor="Number">Card Number</label>
+                        <input {...register("Number", { required: true })} placeholder='XXXX XXXX XXXX XXXX'/>
+                        {errors.Number && <span className='errorMessage'>Card Number is required</span>}
+                    </div>
+
+
+                    <div className="cc-form_input-container">
+                        <label htmlFor="ccexp">EXPIRATION DATE</label>
+                        <div className="exp-date-container">
+                            <div>
+                                <select {...register("Month", {required: true
+                                    })} className='exp-date-container_ccmonth'>
+                                    <option value="">-- Expiration Month --</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                {errors.Month && <span className='errorMessage'>Expiration Month required</span>}
+                            </div>
+                            <div>
+                                <select {...register("Year", {required: true
+                                    })} className='exp-date-container_ccyear'>
+                                        <option value="">Expiration Year</option>
+                                    {expYears.map((year, index)=>{
+                                        return(
+                                            <option key={index} value={year}>{year}</option>
+                                        )
+                                    })}
+                                </select>
+                                {errors.Year && <span className='errorMessage'>Expiration Year required</span>}
+                            </div>
+                            <div>
+                                <input {...register("CCV", { required: true })} placeholder='CCV'/>
+                                {errors.Number && <span className='errorMessage'>CCV Required</span>}
+                            </div>                            
+                        </div>
+                    </div>
+                    <input type="submit" className='paymentSubmitButton' value='Pay Now'/>
+                </form>
+            </div>
+        </div>
+    </section>
+  )
+}

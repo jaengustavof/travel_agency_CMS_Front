@@ -26,7 +26,7 @@ const Container = () => {
   const [amadeusToken, setAmadeusToken] = useState('')
   const [logedUsers, setlogedUsers] = useState('');
   const [regStep, setRegStep] = useState(1);
-  const [flightSearchStep, setFlightSearchStep] = useState(1);
+  const [flightSearchStep, setFlightSearchStep] = useState(3);
   const [flightSearchResult, setFlightSearchResult] = useState([]);
   const [selectedFlight, setSelectedFlight] = useState()
 
@@ -66,7 +66,7 @@ const Container = () => {
   
   console.log(amadeusToken)
  
-  
+  console.log(flightSearchStep)
   return (
     
     <Context.Provider value={{users, setUsers, 

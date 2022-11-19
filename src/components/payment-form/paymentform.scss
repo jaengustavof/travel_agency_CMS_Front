@@ -1,0 +1,80 @@
+@import "../../assets/scss/general.scss";
+.payment-form {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    height: calc(100vh - 100px);
+    &_logo-container{
+      width: 30%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('../../assets/images/gallery/Rectangle_1.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center right;
+      img {
+        width: 60%;
+      }
+    }
+    #payment-form{
+      width: 70%;
+      padding: 40px;
+      #payment-element{
+        width: 100%;
+        margin: auto;
+        max-width: 500px;
+      }
+      #submit {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        margin-top: 40px;
+        border: none;
+        background-color: $accept-green;
+        padding: 15px 0;
+        color: $theme-white;
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 7px;
+        border: 2px solid transparent;
+        transition: 0.5s;
+        &:hover {
+          background-color: $theme-white;
+          border: 2px solid $accept-green;
+          color: $accept-green;
+          box-shadow: 4px 4px 7px rgba(0,0,0,0.5);
+          transition: 0.5s;
+        }
+      }
+    } 
+  }
+  
+
+  
+  
+  
+  @keyframes loading {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    form {
+      width: 80vw;
+      min-width: initial;
+    }
+  }

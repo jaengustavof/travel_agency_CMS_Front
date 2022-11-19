@@ -3,6 +3,7 @@ import FlightSearchForm from '../components/flight-search-form/FlightSearchForm'
 import FlightResult from '../components/flight-results/FlightResults';
 import FlightPassengerForm from '../components/flight-passenger-form/FlightPassengerForm';
 import FlightThanks from '../components/flight-thanks/FlightThanks';
+import PaymentForm from '../components/payment-form/PaymentForm';
 import '../assets/scss/general.scss';
 import Context from '../context';
 import { useContext } from 'react';
@@ -10,6 +11,7 @@ import { useContext } from 'react';
 
 function FlightSearch() {
   const { flightSearchStep } = useContext(Context);
+  console.log(flightSearchStep)
   
   const BookingStep = () => {
     if(flightSearchStep === 1){
@@ -29,7 +31,7 @@ function FlightSearch() {
     }else if(flightSearchStep === 3){
       return (
         <main className='flights-page'>
-            PAYMENT INFO
+            <PaymentForm />
         </main>
       ) 
     }else if(flightSearchStep === 4){
