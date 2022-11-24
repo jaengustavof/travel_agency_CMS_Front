@@ -26,7 +26,7 @@ const Container = () => {
   const [amadeusToken, setAmadeusToken] = useState('')
   const [logedUsers, setlogedUsers] = useState('');
   const [regStep, setRegStep] = useState(1);
-  const [flightSearchStep, setFlightSearchStep] = useState(3);
+  const [flightSearchStep, setFlightSearchStep] = useState(1);
   const [flightSearchResult, setFlightSearchResult] = useState([]);
   const [selectedFlight, setSelectedFlight] = useState()
 

@@ -8,10 +8,10 @@ import { useContext } from 'react';
 
 const App = () =>{
   const { register, formState: { errors }, handleSubmit } = useForm();
-  const {selectedFlight, setSelectedFlight } = useContext(Context);
+  const {selectedFlight, setSelectedFlight, flightSearchStep, setFlightSearchStep } = useContext(Context);
 
   const onSubmit = data =>{
-    console.log(data);
+
     const totalForms = document.getElementsByClassName('passenger-fieldset').length;
     let passengers = []
     for(let i = 0; i < totalForms; i++){
@@ -57,7 +57,7 @@ const App = () =>{
         passengers = [...passengers, newPassenger]
       
     }
-    console.log(passengers)
+    if(passengers.length > 0)setFlightSearchStep(3)
   } 
 
   return (

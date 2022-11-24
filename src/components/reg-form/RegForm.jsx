@@ -32,7 +32,8 @@ const App = () => {
     const onSubmit = data => {
         data.role_name = "user"
         try {
-            axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, data)
+            //axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, data)
+            axios.post(`http://localhost:3000/auth/register`, data)
             .then(function (response) {
             // handle success
             setRegStep(2)
