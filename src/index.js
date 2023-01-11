@@ -10,6 +10,7 @@ import FlightSearch from './pages/flights';
 import RegForm from './pages/signIn';
 import LogForm from './pages/logIn';
 import Users from './pages/user'
+import Thanks from './pages/thanks'
 import Header from "./components/header/Header";
 import Context from './context';
 import axios from "axios";
@@ -28,7 +29,9 @@ const Container = () => {
   const [regStep, setRegStep] = useState(1);
   const [flightSearchStep, setFlightSearchStep] = useState(1);
   const [flightSearchResult, setFlightSearchResult] = useState([]);
-  const [selectedFlight, setSelectedFlight] = useState()
+  const [selectedFlight, setSelectedFlight] = useState();
+  const [flightpassengers, setFlightPasssengers] = useState([])
+
 
   const amadeusAuth = async() => {
 
@@ -65,8 +68,7 @@ const Container = () => {
   },[])
   
   console.log(amadeusToken)
- 
-  console.log(flightSearchStep)
+
   return (
     
     <Context.Provider value={{users, setUsers, 
@@ -75,7 +77,8 @@ const Container = () => {
                               amadeusToken, setAmadeusToken, // Amadeus Token
                               flightSearchStep, setFlightSearchStep,// Flight purchase step
                               flightSearchResult, setFlightSearchResult, // flight search results
-                              selectedFlight, setSelectedFlight // selected flight from search results
+                              selectedFlight, setSelectedFlight, // selected flight from search results
+                              flightpassengers, setFlightPasssengers,
                               }}>
       <BrowserRouter >
         <Header/>
@@ -85,6 +88,7 @@ const Container = () => {
           <Route path="/sign-in" element={<RegForm />} />
           <Route path="/log-in" element={<LogForm />} />
           <Route path="/user" element={<Users />} />
+          <Route path="/thanks" element={<Thanks />} />
         </Routes>
       </BrowserRouter>
     </Context.Provider>

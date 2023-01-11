@@ -10,7 +10,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 
 const Header = () =>{
-    const { logedUsers, setlogedUsers, setFlightSearchResult, setSelectedFlight }= useContext(Context);
+    const { logedUsers, setlogedUsers, setFlightSearchResult, setSelectedFlight,setFlightSearchStep }= useContext(Context);
     const [mobileMenu, setMobileMenu] = useState([]);
     const [isActive, setActive] = useState("false");
     const navigate = useNavigate() 
@@ -72,9 +72,12 @@ const Header = () =>{
     return (
         <header>
             <nav className='px-4 desktop'>
-                <div className="logo-container" onClick={()=> {setFlightSearchResult([])
-                                                                setSelectedFlight()
-                                                                }}>
+                <div className="logo-container"
+                onClick={()=> {
+                    setFlightSearchResult([]);
+                    setSelectedFlight();
+                    setFlightSearchStep(1);
+                }}>
                     <Link to="/">
                         <svg width="41" height="29" viewBox="0 0 41 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="13.0537" y="0.674805" width="12" height="25" rx="6" transform="rotate(30 13.0537 0.674805)" fill="#3011BC"/>

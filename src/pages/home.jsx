@@ -4,7 +4,8 @@ import FlashDeals from "../components/flash-deals/FlashDeals";
 
 
 const Home = () => {
-
+    sessionStorage.removeItem('Passengers');
+    sessionStorage.removeItem('selectedFlight');
     return (
         <main>   
             <Search/>

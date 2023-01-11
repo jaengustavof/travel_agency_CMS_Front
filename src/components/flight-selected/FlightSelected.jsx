@@ -10,13 +10,13 @@ import axios from "axios";
 const FlightSelected = () =>{
 
     const handleClick = (flight) =>{
-
+        
         try {
             axios.post(`http://localhost:3000/flights/flight-confirmation`, flight)
             .then(function (response) {
             // handle success
             const { data } = response.data
-  
+            console.log(response)
                 if(data.flightOffers.length >=1){
                     setFlightSearchStep(2)
                 }

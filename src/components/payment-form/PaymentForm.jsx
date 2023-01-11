@@ -4,6 +4,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import paymentLogo from '../../assets/images/gallery/PaymentLogo.png'
 import CheckoutForm from "./CheckoutForm";
 import "./paymentform.scss";
+import { useContext } from 'react';
+import Context from '../../context';
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
@@ -12,13 +14,14 @@ const stripePromise = loadStripe("pk_test_51M3lFCBdhXwO3KVwrgXL4Wdi2z3FH7XKeydDV
 
 export default function App() {
   const [clientSecret, setClientSecret] = useState("");
+  let {selectedFlight , setRegStep, flightpassengers} = useContext(Context)
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     fetch("http://localhost:3000/create-checkout-session", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ price: 1000 }),
+      body: JSON.stringify({ price: selectedFlight.price.total }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -31,6 +34,10 @@ export default function App() {
     clientSecret,
     appearance,
   };
+
+  sessionStorage.setItem('selectedFlight', JSON.stringify(selectedFlight));
+  sessionStorage.setItem('Passengers', JSON.stringify(flightpassengers));
+
 
   return (
     <div className="payment-form">

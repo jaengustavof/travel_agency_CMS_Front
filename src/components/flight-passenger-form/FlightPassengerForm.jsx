@@ -8,7 +8,7 @@ import { useContext } from 'react';
 
 const App = () =>{
   const { register, formState: { errors }, handleSubmit } = useForm();
-  const {selectedFlight, setSelectedFlight, flightSearchStep, setFlightSearchStep } = useContext(Context);
+  const {selectedFlight, setSelectedFlight, flightSearchStep, setFlightSearchStep, setFlightPasssengers } = useContext(Context);
 
   const onSubmit = data =>{
 
@@ -55,9 +55,12 @@ const App = () =>{
           }
         
         passengers = [...passengers, newPassenger]
-      
+        
     }
-    if(passengers.length > 0)setFlightSearchStep(3)
+    if(passengers.length > 0){
+      setFlightPasssengers(passengers)
+      setFlightSearchStep(3)
+    }
   } 
 
   return (
@@ -74,32 +77,32 @@ const App = () =>{
                   <fieldset className='passenger-fieldset' key={index}>
                     <h4 className='passenger-fieldset_title'>Passenger <span>{index +1}</span></h4>
                     <div className="passenger-fieldset_input-container">
-                      <input type='text' {...register("firstName"+index, { required: true })} placeholder='Name'/>
+                      <input type='text' {...register("firstName"+index, { required: true })} placeholder='Name' value='Gustavo'/>
                       {errors.firstName && <span>Last name is required</span>}
                     </div>
     
                     <div className="passenger-fieldset_input-container">
-                      <input type='text' {...register("lastName"+index, { required: true })} placeholder='Last Name'/>
+                      <input type='text' {...register("lastName"+index, { required: true })} placeholder='Last Name' value='Jaen'/>
                       {errors.firstName && <span>Last last name is required</span>}
                     </div>
     
                     <div className="passenger-fieldset_input-container">
-                      <input type='date' {...register("dob"+index, { required: true })} />
+                      <input type='date' {...register("dob"+index, { required: true })} value='1981-01-18'/>
                       {errors.firstName && <span>Date of Birth is required</span>}
                     </div>
     
                     <div className="passenger-fieldset_input-container">
-                      <input type='email' {...register("email"+index, { required: true })} placeholder='Email'/>
+                      <input type='email' {...register("email"+index, { required: true })} placeholder='Email' value='test@test.com'/>
                       {errors.firstName && <span>Email is required</span>}
                     </div>
     
                     <div className="passenger-fieldset_input-container">
-                      <input type='tel' {...register("phone"+index, { required: true })} placeholder='Phone'/>
+                      <input type='tel' {...register("phone"+index, { required: true })} placeholder='Phone' value='633161556'/>
                       {errors.firstName && <span>Phone is required</span>}
                     </div>
     
                     <div className="passenger-fieldset_input-container">
-                      <input type='text' {...register("address"+index, { required: true })} placeholder='Address' />
+                      <input type='text' {...register("address"+index, { required: true })} placeholder='Address' value='Test Address 123' />
                       {errors.firstName && <span>Address is required</span>}
                     </div>
     

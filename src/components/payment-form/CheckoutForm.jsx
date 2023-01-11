@@ -4,11 +4,14 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
-import './paymentform.scss'
+import './paymentform.scss';
+import Context from '../../context';
+import { useContext } from 'react';
 
 export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
+  const { setFlightSearchStep } = useContext(Context);
 
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +32,7 @@ export default function CheckoutForm() {
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
       switch (paymentIntent.status) {
         case "succeeded":
+          setFlightSearchStep(4)
           setMessage("Payment succeeded!");
           break;
         case "processing":
@@ -59,7 +63,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000",
+        return_url: "http://localhost:3001/thanks",
       },
     });
 
@@ -72,8 +76,10 @@ export default function CheckoutForm() {
       setMessage(error.message);
     } else {
       setMessage("An unexpected error occurred.");
-    }
-
+    }  
+   
+    
+    
     setIsLoading(false);
   };
 

@@ -85,7 +85,7 @@ const App = () => {
 
                 <div className="inputContainer">
 
-                    <input {...register("origin", {required:'Origin is required'})} placeholder='Origin' className='city'/>
+                    <input {...register("origin", {required:'Origin is required'})} placeholder='Origin' className='city' value='BCN'/>
 
                     {errors.origin && <span>{errors.origin.message}</span>}
 
@@ -95,7 +95,7 @@ const App = () => {
 
                 <div className="inputContainer">
 
-                    <input {...register("destination", {required:'Destination is required'})} placeholder='Destination' className='city'/>
+                    <input {...register("destination", {required:'Destination is required'})} placeholder='Destination' className='city' value='MAD'/>
 
                     {errors.destination && <span>{errors.destination.message}</span>}
 
@@ -105,7 +105,7 @@ const App = () => {
 
                 <div className="inputContainer">
 
-                    <input type="date" {...register("departure", {required: 'Departure date required'})} className='mt-4' onChange={handleChange} min={today} />
+                    <input type="date" {...register("departure", {required: 'Departure date required'})} className='mt-4' onChange={handleChange} min={today} value='2023-08-01'/>
 
                     {errors.departure && <span>{errors.departure.message}</span>}
 
@@ -113,7 +113,7 @@ const App = () => {
                 
                 <div className="inputContainer">
 
-                    <input type="date"{...register("arrival")} className='mt-4 ' id="return" min={today}/>
+                    <input type="date"{...register("arrival")} className='mt-4 ' id="return" min={today} value='2023-08-05'/>
 
                 </div>
 
